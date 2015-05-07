@@ -9,11 +9,17 @@ var uglify = require('gulp-uglify');
 var streamqueue = require('streamqueue');
 var jscs = require('gulp-jscs');
 var plumber = require('gulp-plumber');
+var htmlreplace = require('gulp-html-replace');
+var fs = require('fs');
 
 gulp.task('minify', function() {
+  var common = fs.readFileSync('./src/input-common-attributes.html').toString();
   var stream = streamqueue({objectMode: true});
   stream.queue(
-      gulp.src('./src/*.html')
+      gulp.src('./src/input.html')
+          .pipe(htmlreplace({
+            common: common
+          }))
           .pipe(minifyHtml({
             empty: true,
             spare: true,
@@ -21,7 +27,7 @@ gulp.task('minify', function() {
           }))
           .pipe(templateCache({
             module: 'schemaForm',
-            root: 'directives/decorators/bootstrap/input/'
+            root: 'directives/decorators/bootstrap/inputmasks/'
           }))
   );
   stream.queue(gulp.src('./src/*.js'));
@@ -34,12 +40,16 @@ gulp.task('minify', function() {
 });
 
 gulp.task('non-minified-dist', function() {
+  var common = fs.readFileSync('./src/input-common-attributes.html').toString();
   var stream = streamqueue({objectMode: true});
   stream.queue(
-      gulp.src('./src/*.html')
+      gulp.src('./src/input.html')
+          .pipe(htmlreplace({
+            common: common
+          }))
           .pipe(templateCache({
             module: 'schemaForm',
-            root: 'directives/decorators/bootstrap/input/'
+            root: 'directives/decorators/bootstrap/inputmasks/'
           }))
   );
   stream.queue(gulp.src('./src/*.js'));
