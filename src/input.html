@@ -12,6 +12,7 @@
 
 
       <input ng-if="form.schema.format=='cpfcnpj'"
+             sf-changed="form"
              ui-br-cpfcnpj-mask
 
       <!-- build:common -->
@@ -19,6 +20,7 @@
       />
 
       <input ng-if="form.schema.format=='br-phone'"
+             sf-changed="form"
              ui-br-phone-number
 
       <!-- build:common -->
@@ -26,6 +28,7 @@
       />
 
       <input ng-if="form.schema.format=='us-phone'"
+             sf-changed="form"
              ui-us-phone-number
 
       <!-- build:common -->
@@ -33,6 +36,7 @@
       />
 
       <input ng-if="form.schema.format=='cep'"
+             sf-changed="form"
              ui-br-cep-mask
 
       <!-- build:common -->
@@ -40,6 +44,7 @@
       />
 
       <input ng-if="form.schema.format=='cpf'"
+             sf-changed="form"
              ui-br-cpf-mask
 
       <!-- build:common -->
@@ -47,6 +52,7 @@
       />
 
       <input ng-if="form.schema.format=='cnpj'"
+             sf-changed="form"
              ui-br-cnpj-mask
 
       <!-- build:common -->
@@ -54,6 +60,7 @@
       />
 
       <input ng-if="form.schema.format=='ie'"
+             sf-changed="form"
              ui-br-ie-mask="form.uf()"
 
       <!-- build:common -->
@@ -61,6 +68,7 @@
       />
 
       <input ng-if="form.schema.format=='nfe'"
+             sf-changed="form"
              ui-nfe-access-key-mask
 
       <!-- build:common -->
@@ -68,6 +76,7 @@
       />
 
       <input ng-if="form.schema.format=='scientific'"
+             sf-changed="form"
              ui-scientific-notation-mask
 
       <!-- build:common -->
@@ -80,11 +89,13 @@
              ng-attr-min="{{form.min}}"
              ng-attr-max="{{form.max}}"
              ng-attr-ui-hide-group-sep="{{form.separator}}"
+             sf-changed="form"
       <!-- build:common -->
       <!-- endbuild -->
       />
 
       <input ng-if="form.schema.format=='percentage'"
+             sf-changed="form"
              ui-percentage-mask="form.schema.decimals"
              ng-attr-min="{{form.min}}"
              ng-attr-max="{{form.max}}"
@@ -94,6 +105,7 @@
       />
 
       <input ng-if="form.schema.format=='money'"
+             sf-changed="form"
              ui-money-mask="form.schema.decimals"
              ng-attr-min="{{form.min}}"
              ng-attr-max="{{form.max}}"
